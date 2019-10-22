@@ -11,19 +11,7 @@ const PORT = 8000;
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-app.all("*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
+
 app.post("/searchForNumberPlate", async (req, res) => {
   try {
     if (!req.body.vehicleNo) throw new Error(errorCodes.NUMBER_PLATE_MISSING);
