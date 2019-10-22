@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/searchForNumberPlate", async (req, res) => {
+  console.log(req.body.vehicleNo);
   try {
     if (!req.body.vehicleNo) throw new Error(errorCodes.NUMBER_PLATE_MISSING);
     let person = await Person.findOne({ vehicleNo: req.body.vehicleNo });
