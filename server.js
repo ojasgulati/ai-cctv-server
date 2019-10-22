@@ -7,7 +7,7 @@ var cors = require("cors");
 
 var app = express();
 
-const PORT = 3001;
+const PORT = 8000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -17,6 +17,11 @@ app.use(function(req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  next();
+});
+app.all("*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
 app.post("/searchForNumberPlate", async (req, res) => {
