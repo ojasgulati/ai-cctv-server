@@ -7,10 +7,10 @@ var cors = require("cors");
 
 var app = express();
 
-const PORT = 8000;
+const PORT = 80;
+app.use(cors());
 
 app.use(bodyParser.json());
-app.use(cors());
 
 app.post("/searchForNumberPlate", async (req, res) => {
   console.log(req.body.vehicleNo);
